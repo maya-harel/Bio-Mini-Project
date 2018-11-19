@@ -16,3 +16,4 @@ class Constraints:
 
     def match(self, const):
         print "does this input match all the constraints ?"
+

@@ -39,9 +39,9 @@ class treeNode:
                 updateHeader(headerTable[items[0]][1], inTree.children[items[0]])
         if len(items) > 1:  # call updateTree() with remaining ordered items
             updateTree(items[1::], inTree.children[items[0]], headerTable, count)
-# hkjhkjhkj
+
     # create FP-tree from dataset but don't mine
-    def createTree(dataSet, minSup=1):
+    def createTree(dataSet, minSup=1): # minSup - from input
         headerTable = {}
         # go over dataSet twice
         for trans in dataSet:  # first pass counts frequency of occurance
