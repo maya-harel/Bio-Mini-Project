@@ -7,4 +7,5 @@ class Constraints:
 
     def evaluate(self, const):
         print "checking : does this input match all the constraints ?"
+        print "TESTING"
 
