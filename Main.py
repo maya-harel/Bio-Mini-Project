@@ -2,11 +2,13 @@ import Constraints
 import logging
 import FPtree
 
+
 def createInitSet(dataSet):
     retDict = {}
     for trans in dataSet:
         retDict[frozenset(trans)] = 1
     return retDict
+
 
 def parseInput(pathOfInputFle):
     logging.info("parsing input")
@@ -15,15 +17,13 @@ def parseInput(pathOfInputFle):
     window = 0
     currConst = Constraints(const, threshold, window)
 
-def parseData(pathOfData):
-    print "parsing data !"
 
 def main():
 
     logging.basicConfig(filename='BioMiniProject.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S')
     logging.info('Starting our program ! Yay !')
 
-    # example of dataset
+    # for testing
     simpDat = [['r', 'z', 'h', 'j', 'p'],
                ['z', 'y', 'x', 'w', 'v', 'u', 't', 's'],
                ['z'],
@@ -31,9 +31,19 @@ def main():
                ['y', 'r', 'x', 'z', 'q', 't', 'p'],
                ['y', 'z', 'x', 'e', 'q', 's', 't', 'm']]
 
-    # get input. parse into Constrain OBJ
-    # create tree from dataset
-    # mine tree according to constraints. create new tree. and thus forth
+    dat = createInitSet(simpDat)
+    myFPtree, myHeaderTab = FPtree.createTree(dat, 1)
+    # myFPtree.disp()
+    for item in myHeaderTab.keys():
+        condPats = FPtree.findPrefixPath(item, myHeaderTab[item][1])
+        myFPtree, myHeaderTab = FPtree.createTree(condPats, 1)
+
+    '''
+        what is the stop condition ? need to put the code into some sort of loop
+        integrate constraints - how to grow constraints between iterations ?
+        how to parse end results 
+    '''
+
 
 if __name__ == "__main__":
     main()
