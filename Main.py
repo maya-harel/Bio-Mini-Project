@@ -1,4 +1,5 @@
 import Constraints
+import logging
 import FPtree
 
 def createInitSet(dataSet):
@@ -8,7 +9,7 @@ def createInitSet(dataSet):
     return retDict
 
 def parseInput(pathOfInputFle):
-    print "parsing input !"
+    logging.info("parsing input")
     const = ""
     threshold = 0
     window = 0
@@ -18,7 +19,9 @@ def parseData(pathOfData):
     print "parsing data !"
 
 def main():
-    print "Hello it is I"
+
+    logging.basicConfig(filename='BioMiniProject.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S')
+    logging.info('Starting our program ! Yay !')
 
     # example of dataset
     simpDat = [['r', 'z', 'h', 'j', 'p'],

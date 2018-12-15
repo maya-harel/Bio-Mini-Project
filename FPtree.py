@@ -23,30 +23,13 @@ class treeNode:
         for child in self.children.values():
             child.disp(ind+1)
 
-    def updateHeader(nodeToTest, targetNode):  # this version does not use recursion
-        while (nodeToTest.nodeLink != None):  # Do not use recursion to traverse a linked list!
-            nodeToTest = nodeToTest.nodeLink
-        nodeToTest.nodeLink = targetNode
-
-    def updateTree(items, inTree, headerTable, count):
-        if items[0] in inTree.children:  # check if orderedItems[0] in retTree.children
-            inTree.children[items[0]].inc(count)  # increment count
-        else:  # add items[0] to inTree.children
-            inTree.children[items[0]] = treeNode(items[0], count, inTree)
-            if headerTable[items[0]][1] == None:  # update header table
-                headerTable[items[0]][1] = inTree.children[items[0]]
-            else:
-                updateHeader(headerTable[items[0]][1], inTree.children[items[0]])
-        if len(items) > 1:  # call updateTree() with remaining ordered items
-            updateTree(items[1::], inTree.children[items[0]], headerTable, count)
-
     # create FP-tree from dataset but don't mine
-    def createTree(dataSet, minSup=1): # minSup - from input
+    def createTree(self, dataSet, minSup): # minSup - from input
         headerTable = {}
         # go over dataSet twice
         for trans in dataSet:  # first pass counts frequency of occurance
             for item in trans:
-                headerTable[item] = headerTable.get(item, 0) + dataSet[trans]
+                headerTable[item] = headerTable.get(item, 0) + dataSet[trans] # ?
         for k in list(headerTable):  # remove items not meeting minSup
             if headerTable[k] < minSup:
                 del (headerTable[k])
@@ -64,6 +47,22 @@ class treeNode:
                     localD[item] = headerTable[item][0]
             if len(localD) > 0:
                 orderedItems = [v[0] for v in sorted(localD.items(), key=lambda p: p[1], reverse=True)]
-                updateTree(orderedItems, retTree, headerTable, count)  # populate tree with ordered freq itemset
+                self.updateTree(orderedItems, retTree, headerTable, count)  # populate tree with ordered freq itemset
         return retTree, headerTable  # return tree and header table
 
+    def updateHeader(self, nodeToTest, targetNode):  # this version does not use recursion
+        while (nodeToTest.nodeLink != None):  # Do not use recursion to traverse a linked list!
+            nodeToTest = nodeToTest.nodeLink
+        nodeToTest.nodeLink = targetNode
+
+    def updateTree(self, items, inTree, headerTable, count):
+        if items[0] in inTree.children:  # check if orderedItems[0] in retTree.children
+            inTree.children[items[0]].inc(count)  # increment count
+        else:  # add items[0] to inTree.children
+            inTree.children[items[0]] = treeNode(items[0], count, inTree)
+            if headerTable[items[0]][1] == None:  # update header table
+                headerTable[items[0]][1] = inTree.children[items[0]]
+            else:
+                self.updateHeader(headerTable[items[0]][1], inTree.children[items[0]])
+        if len(items) > 1:  # call updateTree() with remaining ordered items
+            self.updateTree(items[1::], inTree.children[items[0]], headerTable, count)
