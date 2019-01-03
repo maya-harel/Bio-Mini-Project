@@ -27,17 +27,38 @@ class treeNode:
             child.disp(ind+1)
 
 
-    # create FP-tree from dataset but don't mine
-def createTree(dataSet, minSup):  # ADD ANOTHER ARG - CONSTRAINT
+# for each cog, count how many different genomes it appears in AND parse according to COG
+# TODO - add window ! and use for search for cog
+def countOccurence(dictData, minSup, window, cog):
+    counterTable = {}
+    for item in dictData:
+        genome = item[0]
+        # if the cog is not in the list - PRUNE
+        if not (cog in item):
+            continue
+        else:
+            for cog in dictData[1:]:
+                counterTable[cog].append(genome)
+
+    for item in counterTable.key():
+        if len(counterTable[item]) < minSup:
+            del counterTable[item]
+
+    return counterTable
+
+
+# create FP-tree from dataset
+def createTree(dataSet, minSup, window, currCog):  # currCog is what we are looking for in the current iteration
     logging.info("creating FP tree")
     headerTable = {}
     # go over dataSet twice
-    for trans in dataSet:  # first pass counts frequency of occurance
-        for item in trans:
-            headerTable[item] = headerTable.get(item, 0) + dataSet[trans]  # ??????
-    for k in list(headerTable):  # remove items not meeting minSup
-        if headerTable[k] < minSup:  # OR DOES NOT MATCH CONSTRAINT
-            del (headerTable[k])
+    headerTable = countOccurence(dataSet, minSup, window, currCog)
+    # for trans in dataSet:  # first pass counts frequency of occurance
+    #     for item in trans:
+    #         headerTable[item] = headerTable.get(item, 0) + dataSet[trans]
+    # for k in list(headerTable):  # remove items not meeting minSup
+    #     if headerTable[k] < minSup:
+    #         del (headerTable[k])
     freqItemSet = set(headerTable.keys())
     logging.info("freqItemSet : " + str(freqItemSet))
     print 'freqItemSet: ', freqItemSet

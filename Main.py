@@ -3,6 +3,22 @@ import logging
 import FPtree
 
 
+# this function creates a list out of input data - a tuple for each line (genome number, list of cogs)
+def parseInput(file):
+    dictdata = []
+    with open(file) as inputFile:
+        for line in inputFile:
+            currCogs = []
+            cogsTemp = line.split('#')[-1]
+            genomeNum = cogsTemp.split('\t')[0]
+            for cog in cogsTemp.split('\t')[1:]:
+                if cog == 'X' or cog == '\n':
+                    continue
+                currCogs.append(cog)
+            dictdata.append((genomeNum, currCogs))
+    return dictdata
+
+
 def createInitSet(dataSet):
     retDict = {}
     for trans in dataSet:
@@ -10,39 +26,32 @@ def createInitSet(dataSet):
     return retDict
 
 
-def parseInput(pathOfInputFle):
-    logging.info("parsing input")
-    const = ""
-    threshold = 0
-    window = 0
-    currConst = Constraints(const, threshold, window)
-
 
 def main():
 
     logging.basicConfig(filename='BioMiniProject.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S')
     logging.info('Starting our program ! Yay !')
 
-    # for testing
-    simpDat = [['r', 'z', 'h', 'j', 'p'],
-               ['z', 'y', 'x', 'w', 'v', 'u', 't', 's'],
-               ['z'],
-               ['r', 'x', 'n', 'o', 's'],
-               ['y', 'r', 'x', 'z', 'q', 't', 'p'],
-               ['y', 'z', 'x', 'e', 'q', 's', 't', 'm']]
+    simpDat = parseInput('C:/Users/User/PycharmProjects/BioMini/inputFiles/tempFile.txt')
+    dat = createInitSet(simpDat) # TODO - do we need this function ? what does it do ?
 
-    dat = createInitSet(simpDat)
-    myFPtree, myHeaderTab = FPtree.createTree(dat, 1)
-    # myFPtree.disp()
-    for item in myHeaderTab.keys():
-        condPats = FPtree.findPrefixPath(item, myHeaderTab[item][1])
-        myFPtree, myHeaderTab = FPtree.createTree(condPats, 1)
+    query = ['0392', '03923']
+    query2 = ['0397', '0398', '0401']
+    minSup = 3
+    window = 3
 
-    '''
-        what is the stop condition ? need to put the code into some sort of loop
-        integrate constraints - how to grow constraints between iterations ?
-        how to parse end results 
-    '''
+    for cog in query:
+        myFPtree, myHeaderTab = FPtree.createTree(dat, minSup, window, cog)
+        # find sub tree for COG and this is the new data for the next iteration
+        dat = FPtree.findPrefixPath(cog, myHeaderTab[cog])
+
+
+    # myFPtree, myHeaderTab = FPtree.createTree(dat, 1)
+    # # myFPtree.disp()
+    # for item in myHeaderTab.values():
+    #     condPats = FPtree.findPrefixPath(item, myHeaderTab[1])
+    #     myFPtree, myHeaderTab = FPtree.createTree(condPats, 1)
+
 
 
 if __name__ == "__main__":
