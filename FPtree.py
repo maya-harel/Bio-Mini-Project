@@ -37,7 +37,7 @@ def countOccurence(dictData, minSup, window, cog):
         if not (cog in item):
             continue
         else:
-            for cog in dictData[1:]:
+            for cog in dictData[1]:
                 counterTable[cog].append(genome)
 
     for item in counterTable.key():
