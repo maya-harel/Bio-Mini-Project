@@ -1,30 +1,39 @@
 import Constraints
 import logging
 import FPtree
+import sys
+
+
+def removeVal(val, list):
+    return [a for a in list if not (a == val)]
 
 
 # this function creates a list out of input data - a tuple for each line (genome number, list of cogs)
-def parseInput(file):
+def parseInput(file, window):
     dictdata = []
     with open(file) as inputFile:
         for line in inputFile:
-            currCogs = []
             cogsTemp = line.split('#')[-1]
             genomeNum = cogsTemp.split('\t')[0]
-            for cog in cogsTemp.split('\t')[1:]:
-                if cog == 'X' or cog == '\n':
-                    continue
-                currCogs.append(cog)
-            dictdata.append((genomeNum, currCogs))
+            cogList = cogsTemp.split('\t')[1:]
+            if len(cogList) <= window :
+                tempCogs = removeVal('X', cogList)
+                tempCogs = removeVal('\n', tempCogs)
+                dictdata.append((genomeNum, tempCogs))
+            else :
+                for i in range(0, len(cogList)-window+1):
+                    tempCogs = removeVal('X', cogList[i:i+window])
+                    tempCogs = removeVal('\n', tempCogs)
+                    dictdata.append((genomeNum, tempCogs))
     return dictdata
 
 
 def createInitSet(dataSet):
     retDict = {}
-    for trans in dataSet:
+    for item in dataSet:
+        trans = item[1]
         retDict[frozenset(trans)] = 1
     return retDict
-
 
 
 def main():
@@ -32,26 +41,22 @@ def main():
     logging.basicConfig(filename='BioMiniProject.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S')
     logging.info('Starting our program ! Yay !')
 
-    simpDat = parseInput('C:/Users/User/PycharmProjects/BioMini/inputFiles/tempFile.txt')
-    dat = createInitSet(simpDat) # TODO - do we need this function ? what does it do ?
+    constraint = ['1744', '3845', '4603', '1079']
+    minSup = 50
+    window = 7
 
-    query = ['0392', '03923']
-    query2 = ['0397', '0398', '0401']
-    minSup = 3
-    window = 3
+    filePath = sys.argv[1]
+    genomeDat = parseInput(filePath, window)
+    dat = createInitSet(genomeDat)
 
-    for cog in query:
-        myFPtree, myHeaderTab = FPtree.createTree(dat, minSup, window, cog)
+    myFPtree = []
+    myHeaderTab = []
+    for cog in constraint:
+        myFPtree, myHeaderTab = FPtree.createTree(genomeDat, dat, minSup)
         # find sub tree for COG and this is the new data for the next iteration
         dat = FPtree.findPrefixPath(cog, myHeaderTab[cog])
-
-
-    # myFPtree, myHeaderTab = FPtree.createTree(dat, 1)
-    # # myFPtree.disp()
-    # for item in myHeaderTab.values():
-    #     condPats = FPtree.findPrefixPath(item, myHeaderTab[1])
-    #     myFPtree, myHeaderTab = FPtree.createTree(condPats, 1)
-
+    print dat
+    # TODO - if last - print results
 
 
 if __name__ == "__main__":

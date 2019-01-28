@@ -1,14 +1,7 @@
 import logging
 
-# variables:
-# name of the node, a count
-# nodelink used to link similar items
-# parent vaiable used to refer to the parent of the node in the tree
-# node contains an empty dictionary for the children in the node
-
 
 class treeNode:
-
     def __init__(self, nameValue, numOccur, parentNode):
         self.name = nameValue
         self.count = numOccur
@@ -28,31 +21,34 @@ class treeNode:
 
 
 # for each cog, count how many different genomes it appears in AND parse according to COG
-# TODO - add window ! and use for search for cog
-def countOccurence(dictData, minSup, window, cog):
-    counterTable = {}
-    for item in dictData:
+def countOccurence(genomeDat, minSup):
+    counterTable = dict()
+    # counterTable['0000'] = ['474', '999']
+    # del(counterTable['0000'])
+    for item in genomeDat:
+        # item is a tuple - (genome, COGList)
         genome = item[0]
-        # if the cog is not in the list - PRUNE
-        if not (cog in item):
-            continue
-        else:
-            for cog in dictData[1]:
+        for cog in item[1]:
+            if counterTable[cog] == None:
+                counterTable[cog] = []
+                continue
+            if genome not in counterTable[cog]:
                 counterTable[cog].append(genome)
 
-    for item in counterTable.key():
-        if len(counterTable[item]) < minSup:
-            del counterTable[item]
-
+    for cog in counterTable.keys():
+        if len(counterTable[cog]) < minSup :
+            del (counterTable[cog])
+            continue
+        counterTable[cog] = len(counterTable[cog])
     return counterTable
 
 
 # create FP-tree from dataset
-def createTree(dataSet, minSup, window, currCog):  # currCog is what we are looking for in the current iteration
+def createTree(genomeDat, dataSet, minSup):  # currCog is what we are looking for in the current iteration
     logging.info("creating FP tree")
     headerTable = {}
     # go over dataSet twice
-    headerTable = countOccurence(dataSet, minSup, window, currCog)
+    headerTable = countOccurence(genomeDat, minSup)
     # for trans in dataSet:  # first pass counts frequency of occurance
     #     for item in trans:
     #         headerTable[item] = headerTable.get(item, 0) + dataSet[trans]
