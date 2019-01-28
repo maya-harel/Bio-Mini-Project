@@ -1,4 +1,5 @@
 import logging
+from collections import defaultdict
 
 
 class treeNode:
@@ -22,25 +23,23 @@ class treeNode:
 
 # for each cog, count how many different genomes it appears in AND parse according to COG
 def countOccurence(genomeDat, minSup):
-    counterTable = dict()
-    # counterTable['0000'] = ['474', '999']
-    # del(counterTable['0000'])
+    # counterTable = {}
+    headerTable = {}
+    counterTable = defaultdict(list)
     for item in genomeDat:
         # item is a tuple - (genome, COGList)
         genome = item[0]
         for cog in item[1]:
-            if counterTable[cog] == None:
-                counterTable[cog] = []
-                continue
             if genome not in counterTable[cog]:
-                counterTable[cog].append(genome)
+                (counterTable[cog]).append(genome)
 
     for cog in counterTable.keys():
         if len(counterTable[cog]) < minSup :
             del (counterTable[cog])
-            continue
-        counterTable[cog] = len(counterTable[cog])
-    return counterTable
+        else :
+            headerTable[cog] = len(counterTable[cog])
+    return headerTable
+
 
 
 # create FP-tree from dataset

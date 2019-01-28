@@ -1,4 +1,3 @@
-import Constraints
 import logging
 import FPtree
 import sys
@@ -16,7 +15,7 @@ def parseInput(file, window):
             cogsTemp = line.split('#')[-1]
             genomeNum = cogsTemp.split('\t')[0]
             cogList = cogsTemp.split('\t')[1:]
-            if len(cogList) <= window :
+            if len(cogList) <= window:
                 tempCogs = removeVal('X', cogList)
                 tempCogs = removeVal('\n', tempCogs)
                 dictdata.append((genomeNum, tempCogs))
@@ -25,6 +24,8 @@ def parseInput(file, window):
                     tempCogs = removeVal('X', cogList[i:i+window])
                     tempCogs = removeVal('\n', tempCogs)
                     dictdata.append((genomeNum, tempCogs))
+    with open('test.txt', 'w+') as file :
+        file.write(str(dictdata))
     return dictdata
 
 
@@ -39,22 +40,28 @@ def createInitSet(dataSet):
 def main():
 
     logging.basicConfig(filename='BioMiniProject.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S')
-    logging.info('Starting our program ! Yay !')
+    logging.info('##################### Starting our program #####################')
 
     constraint = ['1744', '3845', '4603', '1079']
-    minSup = 50
+    minSup = 35
     window = 7
 
     filePath = sys.argv[1]
     genomeDat = parseInput(filePath, window)
     dat = createInitSet(genomeDat)
 
-    myFPtree = []
-    myHeaderTab = []
     for cog in constraint:
+        # logging.info('# current COG : ' + str(cog))
         myFPtree, myHeaderTab = FPtree.createTree(genomeDat, dat, minSup)
         # find sub tree for COG and this is the new data for the next iteration
-        dat = FPtree.findPrefixPath(cog, myHeaderTab[cog])
+        if cog in myHeaderTab.keys():
+            logging.info('# getting sub tree for current COG : ' + str(cog) + 'with frequency of ' + str(myHeaderTab[cog][0]))
+            dat = FPtree.findPrefixPath(cog, myHeaderTab[cog][1])
+        else :
+            print 'Huston we have a problem'
+            return
+
+
     print dat
     # TODO - if last - print results
 
