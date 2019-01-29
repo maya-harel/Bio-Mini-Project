@@ -26,18 +26,26 @@ def countOccurence(genomeDat, minSup):
     # counterTable = {}
     headerTable = {}
     counterTable = defaultdict(list)
-    for item in genomeDat:
-        # item is a tuple - (genome, COGList)
-        genome = item[0]
+    for item in genomeDat: # item is a tuple - (genome, COGList)
         for cog in item[1]:
+            genome = item[0]
             if genome not in counterTable[cog]:
-                (counterTable[cog]).append(genome)
+                counterTable[cog].append(genome)
+                continue
+
+    # for item in genomeDat:
+    #     genome = item[0]
+    #     for cog in item[1]:
+    #         # counterTable[cog] is a list
+    #         if genome not in counterTable[cog]:
+    #             counterTable[cog].append(genome)
 
     for cog in counterTable.keys():
-        if len(counterTable[cog]) < minSup :
+        if len(counterTable[cog]) < minSup:
             del (counterTable[cog])
-        else :
-            headerTable[cog] = len(counterTable[cog])
+            # continue
+        headerTable[cog] = len(counterTable[cog])
+
     return headerTable
 
 
@@ -55,17 +63,17 @@ def createTree(genomeDat, dataSet, minSup):  # currCog is what we are looking fo
     #     if headerTable[k] < minSup:
     #         del (headerTable[k])
     freqItemSet = set(headerTable.keys())
-    logging.info("freqItemSet : " + str(freqItemSet))
-    print 'freqItemSet: ', freqItemSet
+    # logging.info("freqItemSet : " + str(freqItemSet))
+    # print 'freqItemSet: ', freqItemSet
     if len(freqItemSet) == 0:
         logging.info("none of the items are frequent enough.")
         return None, None  # if no items meet min support -->get out
     for k in headerTable:
         headerTable[k] = [headerTable[k], None]  # reformat headerTable to use Node link
-    logging.info("headerTable : " + str(headerTable))
-    print 'headerTable: ', headerTable
+    # logging.info("headerTable : " + str(headerTable))
+    # print 'headerTable: ', headerTable
     retTree = treeNode('Null Set', 1, None)  # create tree
-    for tranSet, count in dataSet.items():  # go through dataset 2nd time
+    for tranSet, count in dataSet.items():  # go through dataset 2nd time #TODO
         localD = {}
         for item in tranSet:  # put transaction items in order
             if item in freqItemSet:
