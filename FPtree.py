@@ -23,31 +23,42 @@ class treeNode:
 
 # for each cog, count how many different genomes it appears in
 def countOccurence(cogsDict, dataSet, minSup, prevCogList):
-    num = 0
     headerTable = {} # key = cog, value = num of different genomes
     counterTable = defaultdict(set) # key = cog, value = list of genomes
-    for item, count in dataSet.items(): # item is a list of COGs
-        if prevCogList != None :
-            item = item + tuple(prevCogList)
-            cogString = "-".join(sorted(item))
-        else :
-            cogString = "-".join(item)
 
-        if cogString not in cogsDict.keys() and prevCogList != None:
-            # print "SHIT the string is not here " + cogString
-            continue
-        genomeList = cogsDict[cogString]
-        for cog in item:
+    for item in cogsDict.keys():
+        listOfCogs = item.split('-')
+        genomeList = cogsDict[item]
+        for cog in listOfCogs :
             for genome in genomeList:
                 counterTable[cog].add(genome)
 
     for cog in counterTable.keys():
         if len(counterTable[cog]) >= minSup:
             headerTable[cog] = len(counterTable[cog])
-        else :
-            counterTable.pop(cog)
 
-    print "CURRENT HEADER TABLE " + str(headerTable)
+    # for item, count in dataSet.items(): # item is a list of COGs
+    #     if prevCogList != None :
+    #         item = item + tuple(prevCogList)
+    #         cogString = "-".join(sorted(item))
+    #     else :
+    #         cogString = "-".join(item)
+    #
+    #     if cogString not in cogsDict.keys() and prevCogList != None:
+    #         # print "SHIT the string is not here " + cogString
+    #         continue
+    #     genomeList = cogsDict[cogString]
+    #     for cog in item:
+    #         for genome in genomeList:
+    #             counterTable[cog].add(genome)
+    #
+    # for cog in counterTable.keys():
+    #     if len(counterTable[cog]) >= minSup:
+    #         headerTable[cog] = len(counterTable[cog])
+    #     else :
+    #         counterTable.pop(cog)
+
+    # print "CURRENT HEADER TABLE " + str(headerTable)
 
     return headerTable
 

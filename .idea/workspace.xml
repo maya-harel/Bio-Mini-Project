@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ff47cc2-974b-4a33-867f-d66094a4a905" name="Default Changelist" comment="">
+    <list default="true" id="4ff47cc2-974b-4a33-867f-d66094a4a905" name="Default Changelist" comment="31/1 maya">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FPtree.py" beforeDir="false" afterPath="$PROJECT_DIR$/FPtree.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FPtree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="36" column="40" selection-start-line="36" selection-end-line="37" />
+            <state relative-caret-position="1260">
+              <caret line="60" column="22" selection-start-line="60" selection-end-line="61" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -38,13 +38,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
+            <state relative-caret-position="122">
+              <caret line="56" column="44" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="44" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <marker date="1548948012452" expanded="true" signature="667:694" ph="..." />
-                <marker date="1548948012452" expanded="true" signature="1792:1793" ph="..." />
-                <marker date="1548948012452" expanded="true" signature="3343:3376" ph="..." />
+                <marker date="1548954423317" expanded="true" signature="659:686" ph="..." />
+                <marker date="1548954423317" expanded="true" signature="2533:2534" ph="..." />
+                <marker date="1548954423317" expanded="true" signature="4578:4611" ph="..." />
               </folding>
             </state>
           </provider>
@@ -302,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548943589722</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="31/1 maya">
+      <created>1548948026778</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1548948026778</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -323,7 +330,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.44517186" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.43371522" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45499182" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -414,26 +421,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Main.py</url>
-          <line>33</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Main.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Main.py</url>
-          <line>24</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Main.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Main.py</url>
           <line>11</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
@@ -487,8 +474,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FPtree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="36" column="40" selection-start-line="36" selection-end-line="37" />
+        <state relative-caret-position="1260">
+          <caret line="60" column="22" selection-start-line="60" selection-end-line="61" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -497,13 +484,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
+        <state relative-caret-position="122">
+          <caret line="56" column="44" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="44" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1548948012452" expanded="true" signature="667:694" ph="..." />
-            <marker date="1548948012452" expanded="true" signature="1792:1793" ph="..." />
-            <marker date="1548948012452" expanded="true" signature="3343:3376" ph="..." />
+            <marker date="1548954423317" expanded="true" signature="659:686" ph="..." />
+            <marker date="1548954423317" expanded="true" signature="2533:2534" ph="..." />
+            <marker date="1548954423317" expanded="true" signature="4578:4611" ph="..." />
           </folding>
         </state>
       </provider>
