@@ -22,12 +22,16 @@ class treeNode:
 
 
 # for each cog, count how many different genomes it appears in
-def countOccurence(cogsDict, dataSet, minSup):
+def countOccurence(cogsDict, dataSet, minSup, prevCogList):
     headerTable = {} # key = cog, value = num of different genomes
     counterTable = defaultdict(set) # key = cog, value = list of genomes
-    counter = 0
-    for item in dataSet: # item is a list of COGs
-        cogString = "-".join(item)
+    for item, count in dataSet.items(): # item is a list of COGs
+        if prevCogList != None:
+            item = item + tuple(prevCogList)
+            cogString = "-".join(sorted(item))
+        else :
+            cogString = "-".join(item)
+
         if cogString not in cogsDict.keys():
             print "SHIT the string is not here " + cogString
             continue
@@ -39,6 +43,8 @@ def countOccurence(cogsDict, dataSet, minSup):
     for cog in counterTable.keys():
         if len(counterTable[cog]) >= minSup:
             headerTable[cog] = len(counterTable[cog])
+        else :
+            counterTable.pop(cog)
 
     print "CURRENT HEADER TABLE " + str(headerTable)
 
@@ -46,10 +52,10 @@ def countOccurence(cogsDict, dataSet, minSup):
 
 
 # create FP-tree from dataset
-def createTree(cogsDict, dataSet, minSup):  # currCog is what we are looking for in the current iteration
+def createTree(cogsDict, dataSet, minSup, prevCogList):  # currCog is what we are looking for in the current iteration
     headerTable = {}
     # go over dataSet twice
-    headerTable = countOccurence(cogsDict, dataSet, minSup)
+    headerTable = countOccurence(cogsDict, dataSet, minSup, prevCogList)
     # for trans in dataSet:  # first pass counts frequency of occurance
     #     for item in trans:
     #         headerTable[item] = headerTable.get(item, 0) + dataSet[trans]
@@ -109,6 +115,6 @@ def findPrefixPath(basePat, treeNode):  # treeNode comes from header table
         prefixPath = []
         ascendTree(treeNode, prefixPath)  # get the string for each leaf in linkedList for specific letter/item and add to list
         if len(prefixPath) > 1:
-            condPats[frozenset(prefixPath[1:])] = treeNode.count
+            condPats[tuple(sorted(prefixPath[1:]))] = treeNode.count
         treeNode = treeNode.nodeLink
     return condPats
