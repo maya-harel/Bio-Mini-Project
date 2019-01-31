@@ -34,9 +34,10 @@ def parseInput(file, window):
                     cogsDict[cogString].add(genomeNum)  # add to cog dictionary
 
 
-    # with open('testDataParsing.txt', 'w+') as file:
-    #     file.write(str(data))
-    #
+    # with open('testCOGdict.txt', 'w+') as file:
+    #     for cogs, genomes in cogsDict.items():
+    #         file.write(str(cogs) + " : " + str(genomes) + '\n')
+
     # with open('testCOGdict.txt', 'w+') as file:
     #     file.write(str(cogsDict))
 
@@ -66,14 +67,17 @@ def main():
     prevCogList = []
     myFPtree, myHeaderTab = FPtree.createTree(cogsDict, dataSet, minSup, None)
     for cog in constraint:
+        print "COG : " + str(cog) + " , " + str(myHeaderTab[cog][0])
+    for cog in constraint:
         try :
             print '# getting sub tree for current COG : ' + str(cog) + ' with frequency of ' + str(myHeaderTab[cog][0])
             dataSet = FPtree.findPrefixPath(cog, myHeaderTab[cog][1])
             print "NEW SUB DATA " + str(dataSet)
             prevCogList.append(cog)
         except Exception :
-            dataSet = []
-            "Oh no, the cog is not here !"
+            dataSet = {}
+            print "Oh no, the cog is not here !"
+            sys.exit(1)
 
         myFPtree, myHeaderTab = FPtree.createTree(cogsDict, dataSet, minSup, prevCogList)
 
