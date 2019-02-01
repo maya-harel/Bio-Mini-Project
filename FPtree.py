@@ -1,6 +1,9 @@
 import logging
 from collections import defaultdict
 
+# global cogsDict
+# global inputData
+# global dataSet
 
 class treeNode:
     def __init__(self, nameValue, numOccur, parentNode):
@@ -64,16 +67,12 @@ def countOccurence(cogsDict, dataSet, minSup, prevCogList):
 
 
 # create FP-tree from dataset
-def createTree(cogsDict, dataSet, minSup, prevCogList):  # currCog is what we are looking for in the current iteration
+def createTree(dataSet, cogsDict):
     headerTable = {}
     # go over dataSet twice
-    headerTable = countOccurence(cogsDict, dataSet, minSup, prevCogList)
-    # for trans in dataSet:  # first pass counts frequency of occurance
-    #     for item in trans:
-    #         headerTable[item] = headerTable.get(item, 0) + dataSet[trans]
-    # for k in list(headerTable):  # remove items not meeting minSup
-    #     if headerTable[k] < minSup:
-    #         del (headerTable[k])
+    for cog in cogsDict.keys():
+        headerTable[cog] = len(cogsDict[cog])
+
     freqItemSet = set(headerTable.keys())
     logging.info("freqItemSet : " + str(freqItemSet))
     print 'freqItemSet: ', freqItemSet
@@ -82,8 +81,6 @@ def createTree(cogsDict, dataSet, minSup, prevCogList):  # currCog is what we ar
         return None, None  # if no items meet min support -->get out
     for k in headerTable:
         headerTable[k] = [headerTable[k], None]  # reformat headerTable to use Node link
-    logging.info("headerTable : " + str(headerTable))
-    print 'headerTable: ', headerTable
     retTree = treeNode('Null Set', 1, None)  # create tree
     for tranSet, count in dataSet.items():  # go through dataset 2nd time
         localD = {}
@@ -93,6 +90,8 @@ def createTree(cogsDict, dataSet, minSup, prevCogList):  # currCog is what we ar
         if len(localD) > 0:
             orderedItems = [v[0] for v in sorted(localD.items(), key=lambda p: p[1], reverse=True)]
             updateTree(orderedItems, retTree, headerTable, count)  # populate tree with ordered freq itemset
+    logging.info("headerTable : " + str(headerTable))
+    print 'headerTable: ', headerTable
     return retTree, headerTable  # return tree and header table
 
 
@@ -127,6 +126,6 @@ def findPrefixPath(basePat, treeNode):  # treeNode comes from header table
         prefixPath = []
         ascendTree(treeNode, prefixPath)  # get the string for each leaf in linkedList for specific letter/item and add to list
         if len(prefixPath) > 1:
-            condPats[tuple(sorted(prefixPath[1:]))] = treeNode.count
+            condPats[frozenset(sorted(prefixPath[1:]))] = treeNode.count
         treeNode = treeNode.nodeLink
     return condPats
