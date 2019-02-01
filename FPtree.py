@@ -90,8 +90,8 @@ def createTree(dataSet, cogsDict):
         if len(localD) > 0:
             orderedItems = [v[0] for v in sorted(localD.items(), key=lambda p: p[1], reverse=True)]
             updateTree(orderedItems, retTree, headerTable, count)  # populate tree with ordered freq itemset
-    logging.info("headerTable : " + str(headerTable))
-    print 'headerTable: ', headerTable
+    # logging.info("headerTable : " + str(headerTable))
+    # print 'headerTable: ', headerTable.keys()
     return retTree, headerTable  # return tree and header table
 
 
@@ -124,8 +124,8 @@ def findPrefixPath(basePat, treeNode):  # treeNode comes from header table
     condPats = {}
     while treeNode != None:
         prefixPath = []
-        ascendTree(treeNode, prefixPath)  # get the string for each leaf in linkedList for specific letter/item and add to list
+        ascendTree(treeNode, prefixPath) # get the string for each leaf in linkedList for specific letter/item and add to list
         if len(prefixPath) > 1:
-            condPats[frozenset(sorted(prefixPath[1:]))] = treeNode.count
+            condPats[frozenset((prefixPath[1:]))] = treeNode.count
         treeNode = treeNode.nodeLink
     return condPats
