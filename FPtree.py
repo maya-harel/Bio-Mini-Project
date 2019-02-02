@@ -120,12 +120,12 @@ def ascendTree(leafNode, prefixPath):  # ascends from leaf node to root
         ascendTree(leafNode.parent, prefixPath)
 
 
-def findPrefixPath(basePat, treeNode):  # treeNode comes from header table
+def findPrefixPath(basePat, treeNode, cogsDict):  # treeNode comes from header table
     condPats = {}
     while treeNode != None:
         prefixPath = []
         ascendTree(treeNode, prefixPath) # get the string for each leaf in linkedList for specific letter/item and add to list
         if len(prefixPath) > 1:
-            condPats[frozenset((prefixPath[1:]))] = treeNode.count
+            condPats[tuple(sorted(prefixPath[1:], reverse=True, key=lambda cog: len(cogsDict[cog])))] = treeNode.count
         treeNode = treeNode.nodeLink
     return condPats

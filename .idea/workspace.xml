@@ -4,6 +4,7 @@
     <list default="true" id="4ff47cc2-974b-4a33-867f-d66094a4a905" name="Default Changelist" comment="1/2 more fun">
       <change afterPath="$PROJECT_DIR$/testingThings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FPtree.py" beforeDir="false" afterPath="$PROJECT_DIR$/FPtree.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FPtree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="548">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="139">
+              <caret line="128" column="49" selection-start-line="128" selection-start-column="49" selection-end-line="128" selection-end-column="49" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -35,17 +36,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="164" column="14" selection-start-line="164" selection-start-column="14" selection-end-line="164" selection-end-column="14" />
+            <state relative-caret-position="152">
+              <caret line="150" column="78" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="78" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
                 <element signature="e#1010#1039#0" />
-                <marker date="1549108840805" expanded="true" signature="2181:2208" ph="..." />
-                <marker date="1549108840805" expanded="true" signature="5690:5691" ph="..." />
-                <marker date="1549108840805" expanded="true" signature="6030:6048" ph="..." />
+                <marker date="1549111243820" expanded="true" signature="2173:2200" ph="..." />
+                <marker date="1549111243820" expanded="true" signature="5669:5670" ph="..." />
+                <marker date="1549111243820" expanded="true" signature="6009:6027" ph="..." />
               </folding>
             </state>
           </provider>
@@ -92,8 +93,9 @@
       <find>return</find>
       <find>.pop</find>
       <find>pop</find>
-      <find>froze</find>
       <find>tuple</find>
+      <find>sor</find>
+      <find>froze</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,8 +118,8 @@
         <option value="$PROJECT_DIR$/testDataParsing.txt" />
         <option value="$PROJECT_DIR$/testCOGdict.txt" />
         <option value="$PROJECT_DIR$/testingThings.py" />
-        <option value="$PROJECT_DIR$/FPtree.py" />
         <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/FPtree.py" />
       </list>
     </option>
   </component>
@@ -320,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549044356112</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="2/2 working but not good results !">
+      <created>1549108875681</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1549108875681</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -341,7 +350,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.39660057" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.48866856" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.46458924" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -426,7 +435,8 @@
     <MESSAGE value="28.1 code update3" />
     <MESSAGE value="31/1 maya" />
     <MESSAGE value="1/2 more fun" />
-    <option name="LAST_COMMIT_MESSAGE" value="1/2 more fun" />
+    <MESSAGE value="2/2 working but not good results !" />
+    <option name="LAST_COMMIT_MESSAGE" value="2/2 working but not good results !" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -556,26 +566,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FPtree.py">
+    <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="152">
+          <caret line="150" column="78" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="78" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#1010#1039#0" />
+            <marker date="1549111243820" expanded="true" signature="2173:2200" ph="..." />
+            <marker date="1549111243820" expanded="true" signature="5669:5670" ph="..." />
+            <marker date="1549111243820" expanded="true" signature="6009:6027" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
+    <entry file="file://$PROJECT_DIR$/FPtree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="164" column="14" selection-start-line="164" selection-start-column="14" selection-end-line="164" selection-end-column="14" />
+        <state relative-caret-position="139">
+          <caret line="128" column="49" selection-start-line="128" selection-start-column="49" selection-end-line="128" selection-end-column="49" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#1010#1039#0" />
-            <marker date="1549108840805" expanded="true" signature="2181:2208" ph="..." />
-            <marker date="1549108840805" expanded="true" signature="5690:5691" ph="..." />
-            <marker date="1549108840805" expanded="true" signature="6030:6048" ph="..." />
           </folding>
         </state>
       </provider>

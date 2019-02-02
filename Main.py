@@ -34,13 +34,13 @@ def parseInput(file, window):
                 cogList = removeVal('X', cogList)
                 cogList = list(set(cogList))
                 cogList = sorted(cogList, reverse=True, key=lambda cog: len(cogsDict[cog]))
-                inputData[frozenset(cogList)].add(genomeNum)
+                inputData[tuple(cogList)].add(genomeNum)
             else :
                 for i in range(0, len(cogList) - window):
                     cogList = removeVal('X', cogList[i:i+window-1])
                     cogList = list(set(cogList))
                     cogList = sorted(cogList, reverse=True, key=lambda cog: len(cogsDict[cog]))
-                    inputData[frozenset(cogList)].add(genomeNum)
+                    inputData[tuple(cogList)].add(genomeNum)
 
     # print "INPUT DATA : "
     # for item in inputData.items():
@@ -107,7 +107,7 @@ def countAndPrune(inputData, minSup): #dict - key= tuple(window), value = set of
             if cog in cogsDict.keys():
                 newTrans.append(cog)
         newTrans = sorted(newTrans, reverse=True, key=lambda cog: len(cogsDict[cog]))
-        newInputData[frozenset(newTrans)] = inputData[trans]
+        newInputData[tuple(newTrans)] = inputData[trans]
         data.append(newTrans)
 
     # dataSet = createInitSet(data)
@@ -117,7 +117,7 @@ def countAndPrune(inputData, minSup): #dict - key= tuple(window), value = set of
 def createInitSet(dataSet):
     retDict = {}
     for trans in dataSet:
-        retDict[frozenset(trans)] = 1
+        retDict[tuple(trans)] = 1
     return retDict
 
 
@@ -138,7 +138,7 @@ def updateData(dataSet, inputData, currentCog, minSup):
     #update DATA
     for trans in inputData.keys():
         if currentCog in trans:
-            newTrans = frozenset(cog for cog in trans if cog != currentCog)
+            newTrans = tuple(cog for cog in trans if cog != currentCog)
             if newTrans in dataSet.keys():
                 newInputData[newTrans] = inputData[trans]
 
@@ -148,7 +148,7 @@ def updateData(dataSet, inputData, currentCog, minSup):
 
 
 def sortConst(constraint, cogsDict):
-    return sorted(constraint, reverse=False, key=lambda cog: len(cogsDict[cog]))
+    return sorted(constraint, reverse=True, key=lambda cog: len(cogsDict[cog]))
 
 
 def main():
@@ -174,11 +174,11 @@ def main():
     remainingCogs = constraint
     for currentCog in constraint:
         myFPtree, myHeaderTab = FPtree.createTree(dataSet, cogsDict)
-        print "HEADER TABLE : " + str(myHeaderTab.keys())
+        print "HEADER TABLE : " + str(myHeaderTab)
         print '# looking for sub tree for current COG : ' + str(currentCog)
         try :
             # print '# found it ! with frequency of ' + str(myHeaderTab[currentCog][0])
-            dataSet = FPtree.findPrefixPath(currentCog, myHeaderTab[currentCog][1])
+            dataSet = FPtree.findPrefixPath(currentCog, myHeaderTab[currentCog][1], cogsDict)
             cogsDict, inputData = updateData(dataSet, inputData, currentCog, minSup)
             print "NEW SUB DATA " + str(dataSet)
         except Exception :
