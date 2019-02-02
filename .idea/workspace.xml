@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ff47cc2-974b-4a33-867f-d66094a4a905" name="Default Changelist" comment="">
+    <list default="true" id="4ff47cc2-974b-4a33-867f-d66094a4a905" name="Default Changelist" comment="1/2 more fun">
       <change afterPath="$PROJECT_DIR$/testingThings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FPtree.py" beforeDir="false" afterPath="$PROJECT_DIR$/FPtree.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FPtree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="44" column="33" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="33" />
+            <state relative-caret-position="548">
+              <caret line="75" selection-start-line="75" selection-end-line="75" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -30,7 +29,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BioMiniProject.log">
           <provider selected="true" editor-type-id="LogFileEditorProvider">
-            <state>
+            <state relative-caret-position="-17548">
               <caret line="626" column="60" selection-start-line="626" selection-start-column="60" selection-end-line="626" selection-end-column="60" />
             </state>
           </provider>
@@ -39,14 +38,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+            <state relative-caret-position="478">
+              <caret line="164" column="14" selection-start-line="164" selection-start-column="14" selection-end-line="164" selection-end-column="14" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
                 <element signature="e#1010#1039#0" />
-                <marker date="1549043532130" expanded="true" signature="2181:2208" ph="..." />
-                <marker date="1549043532130" expanded="true" signature="5689:5690" ph="..." />
-                <marker date="1549043532130" expanded="true" signature="7515:7548" ph="..." />
+                <marker date="1549108840805" expanded="true" signature="2181:2208" ph="..." />
+                <marker date="1549108840805" expanded="true" signature="5690:5691" ph="..." />
+                <marker date="1549108840805" expanded="true" signature="6030:6048" ph="..." />
               </folding>
             </state>
           </provider>
@@ -184,7 +183,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
-      <option name="PARAMETERS" value="$PROJECT_DIR$/inputFiles/cog_demo.txt" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/inputFiles/cog_words_bac.txt" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -314,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549030356244</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="1/2 more fun">
+      <created>1549044356112</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1549044356112</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -330,12 +336,12 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10536913" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11744966" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.3512748" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.39660057" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.46458924" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -427,7 +433,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Main.py</url>
-          <line>180</line>
+          <line>181</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -437,7 +443,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Main.py</url>
-          <line>174</line>
+          <line>175</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -453,11 +459,17 @@
         <watch expression="cogsDict" language="Python" />
         <watch expression="dataSet" language="Python" />
         <watch expression="newInputData" language="Python" />
+        <watch expression="myHeaderTab" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>myHeaderTab</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>newInputData</expression-string>
         <language-id>Python</language-id>
@@ -497,18 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BioMiniProject.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state>
-          <caret line="626" column="60" selection-start-line="626" selection-start-column="60" selection-end-line="626" selection-end-column="60" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="306" selection-start-line="43" selection-start-column="306" selection-end-line="43" selection-end-column="306" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testCOGdict.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -544,10 +544,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/BioMiniProject.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="-17548">
+          <caret line="626" column="60" selection-start-line="626" selection-start-column="60" selection-end-line="626" selection-end-column="60" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="306" selection-start-line="43" selection-start-column="306" selection-end-line="43" selection-end-column="306" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FPtree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="44" column="33" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="33" />
+        <state relative-caret-position="548">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -556,14 +568,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        <state relative-caret-position="478">
+          <caret line="164" column="14" selection-start-line="164" selection-start-column="14" selection-end-line="164" selection-end-column="14" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
             <element signature="e#1010#1039#0" />
-            <marker date="1549043532130" expanded="true" signature="2181:2208" ph="..." />
-            <marker date="1549043532130" expanded="true" signature="5689:5690" ph="..." />
-            <marker date="1549043532130" expanded="true" signature="7515:7548" ph="..." />
+            <marker date="1549108840805" expanded="true" signature="2181:2208" ph="..." />
+            <marker date="1549108840805" expanded="true" signature="5690:5691" ph="..." />
+            <marker date="1549108840805" expanded="true" signature="6030:6048" ph="..." />
           </folding>
         </state>
       </provider>

@@ -148,7 +148,7 @@ def updateData(dataSet, inputData, currentCog, minSup):
 
 
 def sortConst(constraint, cogsDict):
-    return sorted(constraint, reverse=True, key=lambda cog: len(cogsDict[cog]))
+    return sorted(constraint, reverse=False, key=lambda cog: len(cogsDict[cog]))
 
 
 def main():
@@ -159,10 +159,10 @@ def main():
     logging.basicConfig(filename='BioMiniProject.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S') #TODO
     logging.info('##################### Starting our program #####################')
 
-    # constraint = ['1744', '3845', '4603', '1079']
-    constraint = ['b']
-    minSup = 2
-    window = 6
+    constraint = ['1744', '3845', '4603', '1079']
+    #constraint = ['b']
+    minSup = 100
+    window = 7
 
     filePath = sys.argv[1] #'C:/Users/User/PycharmProjects/BioMini/newFliteredData.txt'
     inputData = parseInput(filePath, window) # window + list of genome
@@ -171,9 +171,10 @@ def main():
     dataSet = createInitSet(data)
     constraint = sortConst(constraint, cogsDict)
 
+    remainingCogs = constraint
     for currentCog in constraint:
         myFPtree, myHeaderTab = FPtree.createTree(dataSet, cogsDict)
-        print "HEADER TABLE : " + str(myHeaderTab)
+        print "HEADER TABLE : " + str(myHeaderTab.keys())
         print '# looking for sub tree for current COG : ' + str(currentCog)
         try :
             # print '# found it ! with frequency of ' + str(myHeaderTab[currentCog][0])
@@ -184,24 +185,9 @@ def main():
             # dataSet = {}
             print "Oh no, the cog is not here !"
             sys.exit(1)
-
+        remainingCogs.remove(currentCog)
         # myFPtree, myHeaderTab = FPtree.createTree(dataSet, cogsDict)
 
-    # for cog in constraint:
-    #     print "current iteration - COG : " + str(cog)
-    #     myFPtree, myHeaderTab = FPtree.createTree(cogsDict, dataSet, minSup, cog)
-    #     # find sub tree for COG and this is the new data for the next iteration
-    #
-    #     # with open('testHeaderTable.txt', 'w+') as file:
-    #     #     file.write(str(myHeaderTab))
-    #
-    #     # if cog in myHeaderTab.keys():
-    #     logging.info('# getting sub tree for current COG : ' + str(cog) + ' with frequency of ' + str(myHeaderTab[cog][0]))
-    #     print '# getting sub tree for current COG : ' + str(cog) + ' with frequency of ' + str(myHeaderTab[cog][0])
-    #     dataSet = FPtree.findPrefixPath(cog, myHeaderTab[cog][1])
-    #     # else :
-    #     #     print 'Huston we have a problem'
-    #     #     return
 
     print "RESULTS " + str(dataSet)
 
